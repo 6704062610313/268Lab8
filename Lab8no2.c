@@ -20,7 +20,29 @@ int choiceone(char std[8][10]){
         }
 	}
 	return choice;
-}	
+}
+
+int hardest(char std[8][10]){
+	int student[10] = {0};
+	for(int i=0;i<10;i++){
+		for(int j=0;j<8;j++){
+			if(std[j][i] == charkeys[i]){
+				student[j]++;
+			}
+		}
+	}
+	
+	int min = 8;
+	int choicehardest = 0;
+	for(int i=0;i<10;i++){
+		if(student[i] < min){
+			min = student[i];
+			choicehardest = i + 1;
+		}
+		
+	}
+	printf("hardest question is Question %d with only %d correct\n", choicehardest, min);
+}
 
 int main(){
 	char std[8][10]={
@@ -41,5 +63,5 @@ int main(){
 	
 	printf("student correct choice 1 : %d\n", choiceone(std));
 	
-	
+	hardest(std);
 }
